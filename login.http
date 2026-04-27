@@ -1,0 +1,8 @@
+POST http://localhost:9988/api/usuarios/login
+Content-Type: application/json
+
+{
+    "email": "lovelace@gmail.com",
+    "senha": "assembly7676"
+}
+

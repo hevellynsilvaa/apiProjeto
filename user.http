@@ -1,0 +1,31 @@
+GET http://localhost:9988
+
+####
+GET http://localhost:9988/api/usuarios
+
+###
+GET http://localhost:9988/api/posts/5
+
+
+###
+POST http://localhost:9988/api/usuarios
+Content-Type: application/json
+
+{
+    "email": "kadabra@gmail.com",
+    "senha": "abra2000"
+}
+
+###
+
+PUT http://localhost:9988/posts?id=5
+Content-Type: application/json
+
+{
+    "titulo": "novo titulo do post 5",
+    "texto": "esse é o primeiro post"
+}
+
+###
+DELETE  http://localhost:9988/posts?id=3
+

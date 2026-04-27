@@ -1,0 +1,182 @@
+openapi: '3.0.3'
+info:
+  title: IMD BLOG API!
+  version: '1.0'
+servers:
+  - url: http://localhost:9988
+paths:
+  /api/usuarios:
+    get:
+      operationId: getUsuarios
+      summary: Obtém todos os usuários do sistema
+      tags: 
+        - Usuários
+      responses:
+        '200':
+          description: Lista de usuários
+          content:  
+            application/json:
+              schema:
+                type: object
+                properties:
+                  usuarios: 
+                    type: array
+                    items: 
+                      $ref: "#/components/schemas/usuario"
+    delete:
+      tags: 
+        - Usuários
+      description: Remove o usuário de determinado Id
+      operationId: deleteUserByID
+      summary: Remove um usuário
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:  
+                    type: string
+                    example: "Usuário deletado com sucesso!"
+        '400':  
+          description: 400 Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Erro"
+
+
+  /api/usuarios/{id}:
+    get:
+      operationId: getById
+      summary:  Obtém um usuário a partir do Id
+      tags:
+        - Usuários
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Retorna um usuário
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  usuario:
+                    type: object
+                    $ref: "#/components/schemas/usuario"    
+
+        '400':
+          description: Bad request
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Erro"
+  /api/usuarios/login:
+    post:
+      operationId: userLogin
+      summary: Realiza autenticação na API
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: foo@bar.com.br
+                senha: 
+                  type: string
+                  example: algosecreta
+      tags: 
+        - Autenticação
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    example: yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsImlzcyI6ImltZC1iYWNrZW5kIiwiYXVkIjoiaW1kLWZyb250ZW5kIiwiZW1haWwiOiJuZXd0b25AZ21haWwuY29tIiwia
+        '400': 
+          description: Forbidden
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Erro'
+  /api/posts:
+    post:
+      description: Adiciona uma postagem no BLOG
+      operationId: postPost
+      summary: Adiciona um post
+      tags: 
+        - Posts
+      requestBody: 
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Post"
+      responses:
+        '200':
+          description: OK
+        '401': 
+          description: Não autorizado
+    get:
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT 
+  schemas:
+    usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id do usuário
+          example: 9
+        email: 
+          type: string
+          description: Email do usuário
+          example: foo@bar.com.br
+    Erro:
+      type: object
+      properties:
+        msg:
+          type: string
+          description: Mensagem de Erro
+          example: Usuario não encontrado!
+    Post: 
+      type: object
+      properties:
+        titulo: 
+          type: string
+          example: titulo do seu texto
+        texto: 
+          type: string
+          example: conteúdo do seu texto
+        userId: 
+          type: integer
+          example: 3
+security:
+  - bearerAuth: []

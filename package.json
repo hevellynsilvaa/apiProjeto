@@ -1,0 +1,36 @@
+{
+  "name": "aula4",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "hevellyn",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx sequelize-cli db:migrate && cross-env NODE_ENV=development nodemon -e yaml,js,json --exec node src/index.js",
+    "production": "cross-env NODE-ENV=production node src/index.js",
+    "migrate-dev": "cross-env NODE-ENV=development npx sequelize-cli db:migrate",
+    "migrate-prpod": "cross-env NODE-ENV=production npx sequelize-cli db:migrate"
+  },
+  "dependencies": {
+    "ajv": "^8.18.0",
+    "ajv-formats": "^3.0.1",
+    "dotenv": "^17.4.2",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "moment": "^2.29.1",
+    "multer": "^2.1.1",
+    "nodemon": "^3.1.14",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1",
+    "swagger-ui-express": "^5.0.1",
+    "uuid": "^13.0.0",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
+  }
+}

@@ -1,0 +1,54 @@
+GET http://localhost:9988
+
+####
+GET http://localhost:9988/api/posts
+
+###
+GET http://localhost:9998/api/posts/4
+
+
+###
+POST http://localhost:9988/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlzcyI6ImltZC1iYWNrZW5kIiwiYXVkIjoiaW1kLWZyb250ZW5kIiwiZW1haWwiOiJsb3ZlbGFjZUBnbWFpbC5jb20iLCJpYXQiOjE3NzY3OTY2MTR9.epfe5P-yoAK5hh1D7Jp9TvR43nc5BfKxcAQH8o8fDy0
+
+{
+    "titulo": "Programando o backend do projeto",
+    "texto": "",
+    "userId": 2 
+}
+
+
+
+###
+POST http://localhost:9988/api/usuarios
+Content-Type: application/json
+
+{
+    "email": "lovelace@gmail.com",
+    "senha": "assembly7676"
+   
+}
+###
+GET  http://localhost:9988/api/usuarios
+Content-Type: application/json
+
+###
+GET  http://localhost:9988/api/usuarios/1
+Content-Type: application/json
+
+
+###
+
+PUT http://localhost:9988/posts?id=5
+Content-Type: application/json
+
+{
+    "titulo": "novo titulo do post 5",
+    "texto": "esse é o primeiro post"
+}
+
+###
+DELETE  http://localhost:9988/posts?id=3
+
+
