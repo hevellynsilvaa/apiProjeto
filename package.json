@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "npx sequelize-cli db:migrate && cross-env NODE_ENV=development nodemon -e yaml,js,json --exec node src/index.js",
+    "start": "npx sequelize-cli db:migrate && cross-env NODE_ENV=production node src/index.js",
     "production": "cross-env NODE-ENV=production node src/index.js",
     "migrate-dev": "cross-env NODE-ENV=development npx sequelize-cli db:migrate",
     "migrate-prpod": "cross-env NODE-ENV=production npx sequelize-cli db:migrate"

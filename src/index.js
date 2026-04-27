@@ -1,5 +1,5 @@
 // console.log('tudo certo')
-
+ // "start": "npx sequelize-cli db:migrate && cross-env NODE_ENV=development nodemon -e yaml,js,json --exec node src/index.js",
 const express = require('express')
 const app = express()
 app.use(express.json())
@@ -23,16 +23,14 @@ app.set('view engine', 'ejs')
 app.use(expressLayouts)
 
 
-
-const PORT = 9988
-
-
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use('/', indexRoute)
 app.set('layout', 'layouts/layout')
 app.use('/api/posts', postROTA)
 app.use('/api/usuarios', usuarioRota)
   app.use('/static', express.static('public'))
+
+const PORT = process.env.PORT || 8080
 
 // app.get('/home',(req, res) =>{
 //     res.render('posts', { posts: postResult })
@@ -50,7 +48,7 @@ server.on('listening', ()=> {
     console.log(`servidor pronto na porta ${PORT}`)
 })
 
-const PORT = process.env.PORT || 8080
+
 
 server.on('error', (err) => {
     if (err.code === 'EADDRINUSE') {
