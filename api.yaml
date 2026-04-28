@@ -4,6 +4,8 @@ info:
   version: '1.0'
 servers:
   - url: http://localhost:9988
+  - url: https://dev-backend-imd.herokuapp.com/api
+    description: Servidor de produção
 paths:
   /api/usuarios:
     get:
