@@ -29,7 +29,16 @@ app.set('layout', 'layouts/layout')
 app.use('/api/posts', postROTA)
 app.use('/api/usuarios', usuarioRota)
   app.use('/static', express.static('public'))
+const { Client } = require("pg");
 
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+client.connect();
 const PORT = process.env.PORT || 8080
 
 // app.get('/home',(req, res) =>{
