@@ -6,7 +6,7 @@ module.exports = {
     return queryInterface.addColumn('Posts', 'userId', {
       type: Sequelize.INTEGER,
       references: {
-        model: 'Usuarios',
+        model: 'usuarios',
         key: 'id'
       },
       onDelete: 'SET NULL'
