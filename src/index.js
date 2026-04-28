@@ -29,6 +29,11 @@ app.set('layout', 'layouts/layout')
 app.use('/api/posts', postROTA)
 app.use('/api/usuarios', usuarioRota)
   app.use('/static', express.static('public'))
+  const cors = require("cors");
+
+app.use(cors({
+  origin: "https://apiprojeto-2.onrender.com/"
+}));
 const { Client } = require("pg");
 
 const client = new Client({
