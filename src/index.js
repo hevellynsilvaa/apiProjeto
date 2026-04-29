@@ -26,8 +26,8 @@ app.use(expressLayouts)
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use('/', indexRoute)
 app.set('layout', 'layouts/layout')
-app.use('/api/posts', postROTA)
-app.use('/api/usuarios', usuarioRota)
+app.use('/posts', postROTA)
+app.use('/usuarios', usuarioRota)
   app.use('/static', express.static('public'))
   const cors = require("cors");
 
