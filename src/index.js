@@ -32,7 +32,7 @@ app.use('/usuarios', usuarioRota)
   const cors = require("cors");
 
 app.use(cors({
-  origin: "https://apiprojeto-2.onrender.com/"
+  origin: "https://apiprojeto-2.onrender.com/api"
 }));
 const { Client } = require("pg");
 
