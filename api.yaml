@@ -7,7 +7,7 @@ servers:
   - url: https://apiprojeto-2.onrender.com/api
     description: Servidor de produção
 paths:
-  /api/usuarios:
+  /usuarios:
     get:
       operationId: getUsuarios
       summary: Obtém todos os usuários do sistema
