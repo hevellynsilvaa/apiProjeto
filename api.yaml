@@ -55,7 +55,7 @@ paths:
                 $ref: "#/components/schemas/Erro"
 
 
-  /api/usuarios/{id}:
+  /usuarios/{id}:
     get:
       operationId: getById
       summary:  Obtém um usuário a partir do Id
@@ -85,7 +85,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Erro"
-  /api/usuarios/login:
+  /usuarios/login:
     post:
       operationId: userLogin
       summary: Realiza autenticação na API
